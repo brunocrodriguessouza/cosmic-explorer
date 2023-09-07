@@ -1,7 +1,6 @@
 package com.brunosouza.cosmic.explorer.controller;
 
-import com.brunosouza.cosmic.explorer.model.Robot;
-import lombok.AllArgsConstructor;
+import com.brunosouza.cosmic.explorer.service.RobotService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,19 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/rest/mars")
-@AllArgsConstructor
 public class PlanetController {
-    private final Robot robot;
+    private final RobotService robotService;
 
     public PlanetController() {
-        this.robot = new Robot();
+        this.robotService = new RobotService();
     }
 
     @PostMapping
     public ResponseEntity<String> executeCommands(@RequestBody String commands) {
         try {
-            String result = robot.executeCommands(commands);
-            return ResponseEntity.ok(result);
+            String result = robotService.executeCommands(commands);
+            return ResponseEntity.status(HttpStatus.CREATED).body(result);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

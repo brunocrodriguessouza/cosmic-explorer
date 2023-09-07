@@ -1,33 +1,28 @@
 package com.brunosouza.cosmic.explorer.model;
 
 public class Robot {
-    private int x;
-    private int y;
-    private char direction; // N, S, E, W
-
-    public Robot() {
-        this.x = 0;
-        this.y = 0;
-        this.direction = 'N';
-    }
+    private int x = 0;
+    private int y = 0;
+    private char direction = 'N'; // N, S, E, W
 
     public String executeCommands(String commands) {
-        for (char command : commands.toCharArray()) {
-            try {
-                if (command == 'M') {
-                    move();
-                } else if (command == 'L') {
-                    rotateLeft();
-                } else if (command == 'R') {
-                    rotateRight();
-                } else {
-                    throw new IllegalArgumentException("invalid command");
-                }
-            } catch (IllegalArgumentException e) {
-                throw e;
-            }
-        }
+        commands.chars()
+                .mapToObj(command -> (char) command)
+                .forEach(command -> executeCommand(command));
+
         return "(" + x + ", " + y + ", " + direction + ")";
+    }
+
+    private void executeCommand(char commandChar) {
+        if (commandChar == 'M') {
+            move();
+        } else if (commandChar == 'L') {
+            rotateLeft();
+        } else if (commandChar == 'R') {
+            rotateRight();
+        } else {
+            throw new IllegalArgumentException("invalid command");
+        }
     }
 
     private void move() {
@@ -80,3 +75,4 @@ public class Robot {
         return x >= 0 && x <= 4 && y >= 0 && y <= 4;
     }
 }
+

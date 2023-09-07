@@ -22,7 +22,7 @@ public class PlanetControllerTest {
     public void testRightRotation() throws Exception {
         String commands = "MMRMMRMM";
         mockMvc.perform(post("/rest/mars").content(commands))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content().string("(2, 0, S)"));
     }
 
@@ -30,7 +30,7 @@ public class PlanetControllerTest {
     public void testLeftRotation() throws Exception {
         String commands = "MML";
         mockMvc.perform(post("/rest/mars").content(commands))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content().string("(0, 2, W)"));
     }
 
@@ -39,7 +39,7 @@ public class PlanetControllerTest {
     public void testRepeatedCommands() throws Exception {
         String commands = "MML";
         mockMvc.perform(post("/rest/mars").content(commands))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content().string("(0, 2, W)"));
     }
 
