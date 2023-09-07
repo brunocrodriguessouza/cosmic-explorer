@@ -1,6 +1,3 @@
-# cosmic-explorer
-Cosmic Explorer
-
 # Code Challenge: Cosmic explorer
 *"O objetivo desse desafio é demonstrar sua experiência e conhecimento como desenvolvedor, 
 assim saberemos como você pensa e como resolve problemas na vida real."*
@@ -35,30 +32,31 @@ Não deve guardar estado do robô para consulta posterior;"*
 ## Alguns cenários de teste:
 
 ## Movimento com rotação para direita:
-*"curl -s --request POST http://localhost:8080/rest/mars/MMRMMRMM
-Saída esperada: (2, 0, S)"*
+
+```curl -s --request POST http://localhost:8080/rest/mars/MMRMMRMM
+Saída esperada: (2, 0, S)```
 
 ## Movimento para esquerda:
-*"curl -s --request POST http://localhost:8080/rest/mars/MML
-Saída esperada: (0, 2, W)"*
+```curl -s --request POST http://localhost:8080/rest/mars/MML
+Saída esperada: (0, 2, W)```
 
 
 ## Repetição da requisição com movimento para esquerda:
 
-*"curl -s --request POST http://localhost:8080/rest/mars/MML
-Saída esperada: (0, 2, W)"*
+```curl -s --request POST http://localhost:8080/rest/mars/MML
+Saída esperada: (0, 2, W)```
 
 
 ## Comando inválido:
 
-*"curl -s --request POST http://localhost:8080/rest/mars/AAA
-Saída esperada: 400 Bad Request"*
+```curl -s --request POST http://localhost:8080/rest/mars/AAA
+Saída esperada: 400 Bad Request```
 
 
 ## Posição inválida:
 
-*"curl -s --request POST http://localhost:8080/rest/mars/MMMMMMMMMMMMMMMMMMMMMMMM
-Saída esperada: 400 Bad Request"*
+```curl -s --request POST http://localhost:8080/rest/mars/MMMMMMMMMMMMMMMMMMMMMMMM
+Saída esperada: 400 Bad Request```
 
 
 ## Requisitos técnicos:
